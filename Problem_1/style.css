@@ -1,0 +1,292 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, Arial, sans-serif;
+    transition: background 0.15s, color 0.15s, border 0.15s;
+}
+
+body, html {
+    background: #f6fbfa;
+    min-height: 100vh;
+}
+
+/* Container styles */
+.container {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #f6fbfa 70%, #ddebf6 100%);
+    padding: 32px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Main heading */
+#main-heading {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #24515a;
+    letter-spacing: 2px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* Todo container card */
+#todo-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 480px;
+    min-width: 0;
+    min-height: 330px;
+    background: #fff;
+    border: 1.5px solid #bfd7e2;
+    border-radius: 12px;
+    box-shadow: 0 2px 20px 0 rgba(180,180,200,0.10), 0 0.5px 1.5px rgba(80,120,170,0.09);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 10px;
+    gap: 14px;
+}
+
+/* Input section */
+#input-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f4f4fc;
+    border: 1.5px solid #c4dbe7;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 2px;
+}
+
+#task-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1.5px solid #b7d3ea;
+    background: #f9fbfd;
+    font-size: 1rem;
+    outline: none;
+    color: #22313c;
+}
+
+#task-input:focus {
+    border-color: #337ecc;
+    background: #f5faff;
+}
+
+/* Add button */
+#add-button {
+    padding: 8px 22px;
+    border-radius: 6px;
+    border: 1.5px solid #63b280;
+    background-color: #e2fbe2;
+    color: #18703e;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+}
+#add-button:hover, #add-button:focus {
+    background: #c1f1d1;
+    color: #105f27;
+    border-color: #43a05b;
+}
+
+/* Filter and sort in toolbar-section handled inline (via style if not refactored here) */
+
+/* List section */
+#list-section {
+    width: 100%;
+    background: #fdf6f3;
+    border-radius: 8px;
+    border: 1.5px solid #e0b1af;
+    margin-top: 10px;
+    padding: 12px 4px 8px 4px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    min-height: 120px;
+    max-height: 310px;
+    transition: background 0.15s;
+}
+
+/* Task list items */
+#task-list {
+    list-style: none;
+    width: 100%;
+}
+#task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #fffefb;
+    border: 1px solid #f3dad8;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 7px 8px;
+    font-size: 1.01rem;
+    min-height: 38px;
+    box-shadow: 0 1px 3px 0 rgba(223,192,178,0.06);
+    transition: background 0.12s;
+}
+
+#task-list li.completed {
+    text-decoration: line-through;
+    color: #acacac;
+    background: #f1f2f3;
+}
+
+.task-checkbox[type='checkbox'] {
+    accent-color: #50bb75;
+    margin-right: 7px;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+}
+
+.task-text {
+    flex: 1;
+    word-break: break-word;
+    outline: 0;
+    color: inherit;
+}
+
+.task-delete-btn {
+    background: transparent;
+    border: none;
+    color: #cd4a4e;
+    font-size: 1.14em;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 5px;
+    transition: background 0.14s;
+}
+.task-delete-btn:hover {
+    background: #fce3e3;
+}
+
+/* Edit input for inline editing */
+.task-edit-input {
+    padding: 6px 9px;
+    border-radius: 5px;
+    border: 1.5px solid #b7d3ea;
+    font-size: 1rem;
+    background: #fff;
+    color: #22313c;
+}
+.task-edit-input:focus {
+    border-color: #6ea6e8;
+    background: #eef5fe;
+}
+
+/* Counter section */
+#counter-section {
+    text-align: right;
+    font-size: 0.98em;
+    color: #7698b3;
+    padding: 2px 2px 0 2px;
+}
+
+/* Clear completed button */
+#clear-completed {
+    padding: 7px 18px;
+    border-radius: 7px;
+    border: 1.5px solid #db727c;
+    background-color: #fae2e7;
+    color: #ba2348;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    cursor: pointer;
+    float: right;
+    transition: background 0.15s, border 0.15s, color 0.15s;
+}
+#clear-completed:hover, #clear-completed:focus {
+    background: #ffdde6;
+    border-color: #bd2147;
+    color: #881c33;
+}
+
+/* Filter buttons */
+.filter-btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 1.2px solid #bdd9ee;
+    background: #f7fafd;
+    color: #5f7483;
+    font-size: 0.97rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.16s, border 0.14s;
+}
+.filter-btn:hover,
+.filter-btn:focus {
+    background: #eaf4fc;
+    color: #2676be;
+    border-color: #98bfe3;
+}
+
+.filter-btn.active {
+    background: #c6e7fb;
+    color: #155fa5;
+    border: 1.5px solid #62b6e6;
+}
+
+/* Sort select */
+#sort-select {
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1.3px solid #bfd7e2;
+    background: #f7fafd;
+    color: #225769;
+    font-size: 1rem;
+    margin-left: 4px;
+}
+
+/* Empty message */
+#empty-message {
+    text-align: center;
+    color: #adb3bd;
+    margin: 20px 0 7px 0;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+/* Mobile responsive */
+@media (max-width: 720px) {
+    .container {
+        padding: 12px 2px;
+    }
+    #todo-container {
+        max-width: 99vw;
+        min-width: 0;
+        padding: 12px 1vw 18px 1vw;
+    }
+    #list-section {
+        padding: 6px 2px 6px 2px;
+        min-height: 80px;
+        max-height: 220px;
+    }
+}
+@media (max-width: 460px) {
+    #todo-container {
+        padding: 7vw 0vw 7vw 0vw;
+    }
+    #task-list li {
+        font-size: 0.97em;
+        padding: 6px 3px;
+    }
+    .filter-btn, #add-button, #clear-completed {
+        padding: 7px 13px;
+        font-size: 0.97em;
+    }
+}
