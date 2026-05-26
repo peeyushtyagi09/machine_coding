@@ -10,26 +10,26 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 
 const sortSelect = document.getElementById("sort-select");
 
-const clearCompletedBtn =
-document.getElementById("clear-completed");
+const clearCompletedBtn = document.getElementById("clear-completed");
 
-const emptyMessage =
-document.getElementById("empty-message");
+const emptyMessage = document.getElementById("empty-message");
 
-// from their we are writing the logic of add list 
-function addTasks() {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+// Use a global tasks array to keep in sync
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let currentFilter = "all";
 
+// Logic for adding a task
+function addTask() {
     const text = taskInput.value.trim();
-    if(!text){
-        .alert("task connot be empty");
+    if (!text) {
+        alert("Task cannot be empty");
         return;
     }
     const task = {
-        id: Date.now();
-        text;
-        completed: false;
-        CreatedAt: Date.now()
+        id: Date.now(),
+        text: text,
+        completed: false,
+        createdAt: Date.now()
     };
     tasks.push(task);
     saveTasks();
@@ -37,70 +37,152 @@ function addTasks() {
     taskInput.value = "";
 }
 
-//  then here we are writing the render logic
+// Render logic
 function renderTasks() {
     taskList.innerHTML = "";
     let filteredTasks = [...tasks];
 
-    // filter
-    if(currentfilter==="active") {
-        filterTasks = filteredTasks.filter(
+    // Filter
+    if (currentFilter === "active") {
+        filteredTasks = filteredTasks.filter(
             task => !task.completed
         );
-    }
-
-    else if( currentFilter === "completed"){
+    } else if (currentFilter === "completed") {
         filteredTasks = filteredTasks.filter(
             task => task.completed
         );
     }
 
-    // sort
+    // Sort
     filteredTasks.sort((a, b) => {
-        if(sortselect.value === "oldest"){
+        if (sortSelect.value === "oldest") {
             return a.createdAt - b.createdAt;
         }
-
         return b.createdAt - a.createdAt;
     });
 
-    // render Tasks
-    filteredTasks.forEach(tasks => {
+    // Render tasks
+    filteredTasks.forEach(task => {
         const li = document.createElement("li");
-
         li.classList.add("task-item");
         li.innerHTML = `
-
-        <input
-        type="checkbox"
-        ${task.completed ?
-        "checked" : ""}
-
-        data-id="${task.id}"
-
-        class="complete-checkbox">
-
-        <span
-        class="task-text
-        ${task.completed ?
-        "completed" : ""}">
-
-        ${task.text}
-
-        </span>
-
-        <button
-        class="delete-btn"
-
-        data-id="${task.id}">
-
-        Delete
-
-        </button>
-
+            <input
+                type="checkbox"
+                ${task.completed ? "checked" : ""}
+                data-id="${task.id}"
+                class="complete-checkbox"
+            >
+            <span
+                class="task-text ${task.completed ? "completed" : ""}">
+                ${task.text}
+            </span>
+            <button
+                class="delete-btn"
+                data-id="${task.id}">
+                Delete
+            </button>
         `;
         taskList.appendChild(li);
     });
     updateCounters();
     emptyMessage.style.display = filteredTasks.length === 0 ? "block" : "none";
 }
+
+// Toggle Completed
+taskList.addEventListener(
+    "change",
+    (e) => {
+        if (e.target.classList.contains("complete-checkbox")) {
+            const id = Number(e.target.dataset.id);
+            tasks = tasks.map(task => {
+                if (task.id === id) {
+                    return {
+                        ...task,
+                        completed: !task.completed
+                    };
+                }
+                return task;
+            });
+            saveTasks();
+            renderTasks();
+        }
+    }
+);
+
+// Delete tasks 
+taskList.addEventListener(
+    "click",
+    (e) => {
+        if (e.target.classList.contains("delete-btn")) {
+            const id = Number(e.target.dataset.id);
+            tasks = tasks.filter(task => task.id !== id);
+            saveTasks();
+            renderTasks();
+        }
+    }
+);
+
+// Filter
+filterButtons.forEach(btn => {
+    btn.addEventListener(
+        "click", () => {
+            currentFilter = btn.dataset.filter;
+            filterButtons.forEach(
+                b => b.classList.remove("active")
+            );
+            btn.classList.add("active");
+            renderTasks();
+        }
+    );
+});
+
+// Sort
+sortSelect.addEventListener(
+    "change",
+    renderTasks
+);
+
+// Counters
+function updateCounters() {
+    totalCount.textContent = `Total: ${tasks.length}`;
+    const completed = tasks.filter(task => task.completed).length;
+    completedCount.textContent = `Completed: ${completed}`;
+}
+
+// Clear Completed
+clearCompletedBtn.addEventListener(
+    "click",
+    () => {
+        tasks = tasks.filter(
+            task => !task.completed
+        );
+        saveTasks();
+        renderTasks();
+    }
+);
+
+// Save
+function saveTasks() {
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+}
+
+// Events
+addButton.addEventListener(
+    "click",
+    addTask
+);
+
+taskInput.addEventListener(
+    "keypress",
+    (e) => {
+        if (e.key === "Enter") {
+            addTask();
+        }
+    }
+);
+
+// Initial Render
+renderTasks();
