@@ -1,0 +1,218 @@
+Problem: Username Generator
+Time Limit
+
+30–45 minutes
+
+Tech Stack
+HTML
+CSS
+JavaScript
+
+No libraries.
+
+Problem Statement
+
+Build a Username Generator that helps users generate social-media-style usernames based on their name and selected options.
+
+UI Requirements
+
+User should see:
+
+--------------------------------
+
+Username Generator
+
+First Name
+[____________]
+
+Last Name
+[____________]
+
+Options
+
+☑ Add Numbers
+☑ Add Underscore
+☑ Convert To Uppercase
+
+[ Generate Username ]
+
+Generated Username
+
+john_doe123
+
+[ Copy ]
+
+--------------------------------
+Functional Requirements
+1. First Name Input
+
+User enters:
+
+John
+2. Last Name Input
+
+User enters:
+
+Doe
+3. Generate Button
+
+When clicked:
+
+Generate username using selected options.
+
+Option A: Add Numbers
+
+If checked:
+
+Append random number between 1 and 999.
+
+Example:
+
+johndoe582
+Option B: Add Underscore
+
+If checked:
+
+john_doe
+
+instead of
+
+johndoe
+Option C: Uppercase
+
+If checked:
+
+JOHNDOE
+
+or
+
+JOHN_DOE582
+Example Outputs
+
+Input:
+
+John
+Doe
+
+No options:
+
+johndoe
+
+Underscore:
+
+john_doe
+
+Numbers:
+
+johndoe381
+
+Underscore + Numbers:
+
+john_doe381
+
+Uppercase + Numbers:
+
+JOHNDOE381
+
+All enabled:
+
+JOHN_DOE381
+Copy Button
+
+Click:
+
+Copy
+
+Copies generated username.
+
+Show:
+
+Copied!
+
+for 1–2 seconds.
+
+Validation
+
+If first name empty:
+
+Please enter first name
+
+If last name empty:
+
+Please enter last name
+
+If both empty:
+
+Please fill all fields
+Edge Cases
+
+User enters:
+
+   John
+
+Remove extra spaces.
+
+Result:
+
+john
+
+not
+
+___john
+
+Input:
+
+John Smith
+
+You may convert:
+
+johnsmith
+
+or
+
+john_smith
+Bonus Features (Only if core is done)
+Bonus 1
+
+Generate 5 usernames
+
+Example:
+
+john_doe123
+john_doe981
+john_doe452
+john_doe877
+john_doe102
+Bonus 2
+
+Username History
+
+Store last 5 generated usernames.
+
+Bonus 3
+
+Save history in localStorage.
+
+What I Expect From You
+
+Before coding, tell me:
+
+HTML Sections
+
+Example:
+
+container
+form section
+options section
+result section
+history section
+JS Logic
+
+Step-by-step:
+
+click generate
+→ get values
+→ trim values
+→ validate
+→ build username
+→ display result
