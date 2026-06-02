@@ -7,12 +7,13 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    console.log("😊Hello...😊")
+    console.log("😊 Hello... 😊");
+    res.send("😊 Hello... 😊");
 });
 
 // connecting
 connectDB();
 console.log("port",PORT)
 app.listen(PORT, () => {
-    console.log(`🤠Server is running on PORT, ${PORT}🤠`)
+    console.log(`🤠 Server is running on PORT, ${PORT} 🤠`)
 });
