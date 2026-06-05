@@ -1,4 +1,4 @@
-Frontend Machine Coding Problem: Digital Stopwatch
+Frontend Machine Coding Problem: <Digital Stopwatch>
 Problem Statement
 
 Build a stopwatch application using only:
