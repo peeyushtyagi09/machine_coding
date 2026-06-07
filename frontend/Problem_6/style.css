@@ -1,0 +1,65 @@
+/**/ Start Generation Here */
+/**/ 
+/* Carousel Container */
+#carousel {
+    width: 400px;
+    margin: 60px auto;
+    padding: 32px 24px 30px 24px;
+    background: #f8fafc;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Image area and image */
+#image-area {
+    width: 300px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+#myImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgba(16, 24, 40, 0.11);
+    background: #e0e7ef;
+}
+
+/* Button area */
+#button-area {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+
+/* Previous and Next buttons */
+#previous-btn,
+#next-btn {
+    padding: 10px 24px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.16s, transform 0.16s;
+    box-shadow: 0 1px 6px rgba(37, 99, 235, 0.10);
+}
+
+#previous-btn:hover,
+#next-btn:hover {
+    background: #1743ac;
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/**/ End Generation Here */
+```
