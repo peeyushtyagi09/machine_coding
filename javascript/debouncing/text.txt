@@ -1,2 +1,5 @@
 // ok hum kya kara raha h hum ok debouncing emplement kar na h tho 
 us ke liye hum ko phale data ko fetch karna hoga.
+
+// ok data tho fetch ho gaya 
+// ab hum ko us ko filter kar le fetch bhi tho karna h
