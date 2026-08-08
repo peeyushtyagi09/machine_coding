@@ -1,0 +1,7 @@
+1.textcontent
+2.ok
+3.throw new Error
+4. finally
+5.innerHtml
+6.createElement
+7.appendChild
