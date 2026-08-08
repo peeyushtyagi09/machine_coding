@@ -1,0 +1,1 @@
+throttle kay hota h -> ya tak current duration complete nhi hoga tab tak vo other request ko vo neglect karta rahega

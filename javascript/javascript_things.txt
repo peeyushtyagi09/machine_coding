@@ -5,3 +5,4 @@
 5.innerHtml
 6.createElement
 7.appendChild
+8.call , apply, buy
