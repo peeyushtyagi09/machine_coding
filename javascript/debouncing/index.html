@@ -26,6 +26,28 @@
             margin-bottom: 20px;
         }
 
+        /* Improved input box styles */
+        #searchInput {
+            display: block;
+            width: 350px;
+            max-width: 100%;
+            font-size: 1rem;
+            padding: 10px 16px;
+            margin-bottom: 24px;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border 0.2s, box-shadow 0.2s;
+            outline: none;
+            background-color: #fafbfc;
+        }
+
+        #searchInput:focus {
+            border-color: #84b9fa;
+            box-shadow: 0 0 0 2px rgba(60,140,255,0.08);
+            background-color: #fff;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -53,6 +75,11 @@
 <body>
 
     <h1>Product List</h1>
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products..."
+    >
 
     <div id="loading">
         Loading products...

@@ -3,6 +3,7 @@ const API_URL = "https://dummyjson.com/products?limit=100";
 const productList = document.getElementById("productList");
 const loading = document.getElementById("loading");
 const error = document.getElementById("error");
+const searchInput = document.getElementById("searchInput");
 
 async function fetchProducts() {
     try{
@@ -27,6 +28,16 @@ async function fetchProducts() {
 
 function renderProducts(products){
     productList.innerHTML = "";
+    if(products.length === 0){
+        productList.innerHTML = `
+             <tr>
+                <td colspan="5">
+                    No products found
+                </td>
+            </tr>
+        `;
+        return;
+    }
     products.forEach((product) => {
         const row = document.createElement("tr");
 
@@ -46,29 +57,23 @@ function renderProducts(products){
             >
         </td>
     `;
-     row.innerHTML = `
-            <td>${product.id}</td>
-
-            <td>${product.title}</td>
-
-            <td>${product.category}</td>
-
-            <td>$${product.price}</td>
-
-            <td>
-                <img
-                    src="${product.thumbnail}"
-                    alt="${product.title}"
-                >
-            </td>
-        `;
         productList.appendChild(row);
     });
 }
 
+let products = [];
+
 async function init(){
-    const products = await fetchProducts();
+    products = await fetchProducts();
     renderProducts(products);
 }
+
+searchInput.addEventListener("input", (event) => {
+    const searchText = event.target.value.toLowerCase().trim();
+    const filteredProducts = products.filter((product) => {
+        return product.title.toLowerCase().includes(searchText);
+    });
+    renderProducts(filteredProducts);
+});
 
 init();

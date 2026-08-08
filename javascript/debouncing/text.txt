@@ -5,3 +5,6 @@ us ke liye hum ko phale data ko fetch karna hoga.
 // ab hum ko us ko filter kar le fetch bhi tho karna h
 
 // okk data filter tho hogaya ab hum ko us ko render karna h. okk
+
+ab tho render bhi ho gaya data ab hum ko search ki functionallity emplemnt kar ni h
+ab kaval last step debouncing baki h
