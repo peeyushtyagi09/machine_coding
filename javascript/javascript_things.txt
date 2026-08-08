@@ -6,3 +6,5 @@
 6.createElement
 7.appendChild
 8.call , apply, buy
+9.how fetch work internally
+10.what is seo, why it is important what is the need and work of it and why it is not work in csr and how it is realted to indexing.
