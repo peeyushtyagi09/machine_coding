@@ -1,0 +1,17 @@
+Easy Frontend Machine Coding Question: To-Do List App
+Requirements
+Core Features
+Add task (input + button)
+Delete task
+Mark task as complete (checkbox or strike-through)
+Persist tasks in localStorage
+Show task count (total + completed)
+Clear all completed tasks button
+UI
+Responsive (desktop + mobile)
+Clean simple list design
+Input validation (empty task not allowed)
+Bonus (Optional)
+Edit task inline
+Filter tasks: All / Active / Completed
+Sort by creation time

@@ -1,0 +1,18 @@
+Next Project: Image Carousel (Slider)
+
+This is one of the most common frontend machine coding questions.
+
+What You Need to Build
+ -------------------
+|                   |
+|      IMAGE 1      |
+|                   |
+ -------------------
+
+[ Previous ] [ Next ]
+Requirements
+Core
+Show one image at a time
+Next button
+Previous button
+Infinite looping

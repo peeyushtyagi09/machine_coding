@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-heading">To-Do List App</h1>
+        <div id="todo-container">
+            <!-- Controls: Add, Filter, Sort -->
+            <div id="input-section">
+                <input id="task-input" type="text" maxlength="100" autocomplete="off" placeholder="Add a new task..." />
+                <button id="add-button">Add</button>
+            </div>
+            <div id="toolbar-section" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 12px; gap: 8px;">
+                <div id="filters" style="display: flex; gap: 6px;">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+                <div id="sort-section" style="display: flex; align-items: center; gap: 4px;">
+                    <label for="sort-select" style="font-size: 0.9em;">Sort</label>
+                    <select id="sort-select">
+                        <option value="newest" selected>Newest</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Counters -->
+            <div id="counter-section" style="margin-top: 8px; text-align: right; font-size: 0.95em;">
+                <span id="count-total">Total: 0</span>,
+                <span id="count-completed">Completed: 0</span>
+            </div>
+            <!-- Task List -->
+            <div id="list-section">
+                <ul id="task-list"></ul>
+                <div id="empty-message" style="text-align: center; color: #888; margin-top: 18px; display: none;">
+                    No tasks found.
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button id="clear-completed" style="margin-top: 12px;">Clear Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

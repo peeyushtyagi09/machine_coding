@@ -1,0 +1,197 @@
+Frontend Machine Coding Problem: <Digital Stopwatch>
+Problem Statement
+
+Build a stopwatch application using only:
+
+HTML
+CSS
+JavaScript
+
+No libraries.
+
+What You Need to Create
+
+A stopwatch UI like:
+
+----------------------
+      STOPWATCH
+
+      00:00:00
+
+[ Start ]
+[ Pause ]
+[ Reset ]
+[ Lap ]
+
+----------------------
+
+Laps
+
+1. 00:00:05
+2. 00:00:12
+3. 00:00:18
+Core Requirements
+1. Start Button
+
+When clicked:
+
+00:00:00
+↓
+00:00:01
+00:00:02
+00:00:03
+...
+
+Timer should continuously increase.
+
+2. Pause Button
+
+When clicked:
+
+00:00:15
+
+Time freezes.
+
+Clicking Start again:
+
+00:00:15
+↓
+00:00:16
+00:00:17
+
+Should continue from previous value.
+
+Not restart.
+
+3. Reset Button
+
+When clicked:
+
+00:00:00
+
+Everything resets.
+
+Also clear laps.
+
+4. Lap Button
+
+Example:
+
+Current timer:
+
+00:00:05
+
+Click Lap:
+
+Laps
+
+1. 00:00:05
+
+Timer continues running.
+
+Later:
+
+00:00:12
+
+Click Lap:
+
+1. 00:00:05
+2. 00:00:12
+Expected UI
+Display
+<div id="timer">
+  00:00:00
+</div>
+Controls
+Start
+Pause
+Reset
+Lap
+Lap List
+<ul id="lap-list">
+</ul>
+Edge Cases Interviewer Expects
+Case 1
+
+User clicks Start multiple times.
+
+Bad:
+
+Start
+Start
+Start
+
+Three intervals start.
+
+Timer becomes:
+
+00:00:01
+00:00:04
+00:00:07
+
+Bug.
+
+Prevent this.
+
+Case 2
+
+User clicks Pause before Start.
+
+Should not crash.
+
+Case 3
+
+User clicks Lap before Start.
+
+Either:
+
+Ignore
+Disable button
+
+Both acceptable.
+
+Case 4
+
+Reset after many laps.
+
+Expected:
+
+Timer = 00:00:00
+
+Laps = []
+Skills Being Tested
+DOM Manipulation
+document.getElementById()
+Events
+click
+Timing APIs
+setInterval()
+clearInterval()
+State Management
+
+Need variables like:
+
+isRunning
+elapsedTime
+intervalId
+Rendering
+
+Convert:
+
+65234
+
+milliseconds
+
+into:
+
+01:05:23
+
+format.
+
+Difficulty
+
+Without laps:
+4/10
+
+With laps:
+5.5/10

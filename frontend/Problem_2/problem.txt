@@ -1,0 +1,37 @@
+Frontend Machine Coding #2 (HTML + CSS + JS)
+Problem: Password Generator App
+
+Build a password generator.
+
+Features
+Core
+Password length slider (4–20)
+Checkbox options:
+Uppercase
+Lowercase
+Numbers
+Symbols
+Generate password button
+Copy password button
+Password strength indicator:
+Weak
+Medium
+Strong
+UI
+-------------------------
+Password Generator
+
+[ generated password ]
+
+Length: 12  ----slider----
+
+☑ Uppercase
+☑ Lowercase
+☑ Numbers
+☑ Symbols
+
+[ Generate ]
+[ Copy ]
+
+Strength: Strong
+-------------------------

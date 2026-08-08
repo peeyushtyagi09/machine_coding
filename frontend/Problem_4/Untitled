@@ -1,0 +1,199 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #0f172a;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Main Container */
+
+.container {
+    width: 90%;
+    max-width: 500px;
+
+    background: white;
+
+    padding: 2rem;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    text-align: center;
+}
+
+
+/* Heading */
+
+h1 {
+    margin-bottom: 1.5rem;
+
+    color: #1e293b;
+
+    letter-spacing: 2px;
+}
+
+
+/* Timer */
+
+#timer {
+    font-size: 3rem;
+
+    font-weight: bold;
+
+    color: #2563eb;
+
+    margin-bottom: 2rem;
+
+    font-family: monospace;
+}
+
+
+/* Buttons */
+
+.button-container {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 2rem;
+}
+
+
+.button-container button {
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+/* Individual Button Colors */
+
+#start-btn {
+    background: #22c55e;
+    color: white;
+}
+
+#pause-btn {
+    background: #f59e0b;
+    color: white;
+}
+
+#reset-btn {
+    background: #ef4444;
+    color: white;
+}
+
+#lap-btn {
+    background: #2563eb;
+    color: white;
+}
+
+
+/* Hover Effects */
+
+.button-container button:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+/* Lap Section */
+
+.lap-container {
+    text-align: left;
+}
+
+
+.lap-container h2 {
+    margin-bottom: 1rem;
+
+    color: #1e293b;
+}
+
+
+/* Lap List */
+
+#lap-list {
+    list-style: none;
+
+    max-height: 250px;
+
+    overflow-y: auto;
+}
+
+
+#lap-list li {
+    padding: 10px;
+
+    margin-bottom: 8px;
+
+    border-radius: 6px;
+
+    background: #f1f5f9;
+
+    border-left: 4px solid #2563eb;
+
+    font-family: monospace;
+}
+
+
+/* Scrollbar */
+
+#lap-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#lap-list::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    #timer {
+        font-size: 2rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-container button {
+        width: 100%;
+    }
+
+}
