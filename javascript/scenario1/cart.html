@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 32px;
+            background: #f6f8fa;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #cartItems {
+            margin-bottom: 24px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #e3e7ee;
+            border-radius: 10px;
+            padding: 15px 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 6px rgba(36, 63, 118, 0.08);
+        }
+        .cart-title {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+        .cart-price {
+            margin-right: 18px;
+            color: #258a45;
+            font-weight: 500;
+        }
+        .remove-btn {
+            background: #e34b4b;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .remove-btn:hover {
+            background: #be2424;
+        }
+        #emptyMessage {
+            color: #555;
+            text-align: center;
+            margin: 50px 0;
+        }
+        #cartTotal {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: #226838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cartItems">
+        <!-- Cart items will appear here -->
+    </div>
+    <div id="emptyMessage" style="display:none;">Your cart is empty.</div>
+    <div id="cartTotal">Total: $0</div>
+    <script src="cart.js"></script>
+</body>
+</html>

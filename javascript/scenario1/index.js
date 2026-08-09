@@ -66,9 +66,35 @@ function renderData(products){
     });
 };
 
+function getCart() {
+    const cart = localStorage.getItem("cart");
+
+    if(!cart) return [];
+
+    return JSON.parse(cart);
+}
+
+function saveCart(cart){
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 
 async function handleAddToCart(){
-    console.log("ye kaam kar raha h...");
+    const cart = getCart();
+
+    const existingItem = cart.find(item => item.id === products.id);
+
+    if(existingItem){
+        existingItem.quantity++;
+    }else{
+        cart.push({
+            id: products.id,
+            quantity: 1
+        });
+    }
+    saveCart(cart);
+
+    console.log(getCart());
 }
 async function helper() { 
     products = await fetchData(); 
@@ -76,3 +102,5 @@ async function helper() {
 }
 
 helper();
+
+
