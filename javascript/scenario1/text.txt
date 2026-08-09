@@ -1,1 +1,6 @@
 -> first thing hum kar kar ni vo data fetch karna h.
+-> hum ne ab tak kya kiya h data fetch go gaya h. hum ne us ko render bhi karna diya h screen pe
+and ek add naam ka button bhi add kar diya and us ka function bhi bana diya and 
+us me console.olog kar ke check bhi kar liya okk.
+
+-> next hum ko cart ki problme ko ki main problem us ka solution find karna h.
