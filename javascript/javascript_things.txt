@@ -2,9 +2,11 @@
 2.ok
 3.throw new Error
 4. finally
-5.innerHtml
+5.innerHtml, innerText
 6.createElement
 7.appendChild
 8.call , apply, buy
 9.how fetch work internally
 10.what is seo, why it is important what is the need and work of it and why it is not work in csr and how it is realted to indexing.
+11. storage type what when where why and how
+12. how to create and use of all the data structure 

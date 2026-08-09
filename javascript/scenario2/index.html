@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 700px;
+            margin: 48px auto;
+            padding: 32px 24px;
+            background: #f5f6fa;
+            color: #223;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 28px;
+            color: #1b1f3b;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        form#taskForm {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px 20px;
+            box-shadow: 0 3px 16px rgba(34,41,122,0.04);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+        #taskForm input[type="text"], #taskForm select, #taskForm input[type="date"] {
+            flex: 1 1 135px;
+            max-width: 200px;
+            min-width: 120px;
+            border: 1px solid #bdbddd;
+            border-radius: 6px;
+            padding: 11px 9px;
+            font-size: 1rem;
+            background: #f8faff;
+            transition: border .15s;
+        }
+        #taskForm input:focus, #taskForm select:focus, #taskForm input[type="date"]:focus {
+            border-color: #3c4bc6;
+            outline: none;
+        }
+
+        #taskForm button[type="submit"] {
+            background: linear-gradient(90deg,#5d65f1,#1bb6f9 70%);
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            padding: 13px 22px;
+            min-width: 110px;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+        #taskForm button[type="submit"]:hover {
+            filter: brightness(1.08);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .filter-buttons button {
+            background: #ecebfd;
+            color: #3c4bc6;
+            border: none;
+            border-radius: 5px;
+            padding: 9px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            font-weight: 500;
+        }
+        .filter-buttons button.active,
+        .filter-buttons button:focus-visible {
+            background: #3c4bc6;
+            color: #fff;
+        }
+        .filter-buttons button:hover:not(.active) {
+            background: #dae7fc;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px dashed #c7c9e9;
+            margin-bottom: 26px;
+        }
+
+        #taskList {
+            min-height: 60px;
+        }
+
+        .task {
+            background: #fff;
+            border-radius: 10px;
+            padding: 17px 19px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 7px rgba(60,75,198,0.09);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.15s;
+        }
+        .task:hover {
+            box-shadow: 0 3px 16px rgba(60,75,198,0.17);
+        }
+
+        .task-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .task-title {
+            font-size: 1.09rem;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        .completed .task-title {
+            text-decoration: line-through;
+            opacity: 0.58;
+        }
+        .task-details {
+            font-size: 0.96rem;
+            color: #4e5872;
+        }
+        .priority-high {
+            background: #fd6666;
+            color: #fff;
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-size: 0.94rem;
+            margin-left: 7px;
+        }
+        .priority-medium {
+            background: #ffd26d;
+            color: #634700;
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-size: 0.94rem;
+            margin-left: 7px;
+        }
+        .priority-low {
+            background: #63e290;
+            color: #014026;
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-size: 0.94rem;
+            margin-left: 7px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+        .actions button {
+            background: none;
+            border: none;
+            color: #5d65f1;
+            padding: 3px 10px;
+            font-size: 0.98rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .actions button:hover {
+            background-color: #ecebfd;
+        }
+        .actions .delete-btn {
+            color: #ea3970;
+        }
+        .actions .delete-btn:hover {
+            background: #fae1e6;
+        }
+        .actions .complete-btn {
+            color: #43c071;
+        }
+        .actions .complete-btn:hover {
+            background: #dbf8e5;
+        }
+
+        @media (max-width: 570px) {
+            body {
+                padding: 9px;
+            }
+            form#taskForm {
+                flex-direction: column;
+                gap: 7px;
+                padding: 9px 7px;
+            }
+            .task {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px 10px;
+                gap: 3px;
+            }
+            .task-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>
+        <svg width="30" height="30" style="vertical-align:-6px;" fill="none" stroke="#5d65f1" stroke-width="3" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2.5"/><rect x="13" y="4" width="7" height="7" rx="2.5"/><rect x="4" y="13" width="7" height="7" rx="2.5"/><rect x="13" y="13" width="7" height="7" rx="2.5"/></svg>
+        Task Manager
+    </h1>
+
+    <form id="taskForm" autocomplete="off">
+        <input
+            type="text"
+            id="title"
+            placeholder="Enter task title…"
+            maxlength="90"
+            required
+        >
+
+        <select id="priority" required>
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+        </select>
+
+        <input
+            type="date"
+            id="dueDate"
+            min="<?= date('Y-m-d'); ?>"
+            placeholder="Due date"
+        >
+
+        <button id="submit-btn" type="submit">
+            <svg width="17" height="17" style="vertical-align:-3px;margin-right:4px;" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12l6 6L20 6"/></svg>
+            Add Task
+        </button>
+    </form>
+
+    <div class="filter-buttons">
+        <button id="allBtn" class="active" tabindex="0">All</button>
+        <button id="pendingBtn" tabindex="0">Pending</button>
+        <button id="completedBtn" tabindex="0">Completed</button>
+        <button id="highPriorityBtn" tabindex="0">High Priority</button>
+    </div>
+
+    <hr>
+
+    <div id="taskList">
+        <!-- Tasks go here -->
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
