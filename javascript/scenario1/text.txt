@@ -4,3 +4,8 @@ and ek add naam ka button bhi add kar diya and us ka function bhi bana diya and
 us me console.olog kar ke check bhi kar liya okk.
 
 -> next hum ko cart ki problme ko ki main problem us ka solution find karna h.
+
+
+-> ok hum ne data ko local storage me store kara diya hum ne us ka bhi logic 
+
+-> ab me cart ka logic likh na try kar raha hu okkk.

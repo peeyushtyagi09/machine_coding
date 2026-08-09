@@ -13,6 +13,17 @@
         h1 {
             margin-bottom: 20px;
         }
+        #loading {
+            display: none;
+            margin-bottom: 16px;
+            color: #4a4a4a;
+            font-size: 1.06rem;
+        }
+        #error {
+            color: red;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
         #cartItems {
             margin-bottom: 24px;
         }
@@ -62,6 +73,8 @@
 </head>
 <body>
     <h1>Your Cart</h1>
+    <div id="loading">Loading cart...</div>
+    <div id="error"></div>
     <div id="cartItems">
         <!-- Cart items will appear here -->
     </div>
