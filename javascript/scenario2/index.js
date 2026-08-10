@@ -1,77 +1,23 @@
 let tasks = [];
 
-const form = document.getElementById("taskForm");
-
-const titleInput = document.getElementById("title");
-const priorityInput = document.getElementById("priority");
-const dueDateInput = document.getElementById("dueDate");
-
+// ye tho us ke liye ho 
 const taskList = document.getElementById("taskList");
 
-const allBtn = document.getElementById("allBtn");
-const pendingBtn = document.getElementById("pendingBtn");
-const completedBtn = document.getElementById("completedBtn");
-const highPriorityBtn = document.getElementById("highPriorityBtn");
+// inputs le lo sare
+const title = document.getElementById("title");
+const priority = document.getElementById("priority");
+const dueDate = document.getElementById("dueDate");
 
-function generateId(){
-    return Date.now() + Math.random();
-}
+// from ko bhi le lo 
+const from = document.getElementById("taskForm");
 
-function createTask(title, priority, dueDate){
-    if(!title.trim()){
-        alert("Task title is required");
-        return;
-    }
-
-    const task = {
-        id: generateId(), 
-        title: title.trim(), 
-        priority: priority, 
-        dueDate: dueDate, 
-        completed: false, 
-        createdAt: new Date()
-    };
-
-    tasks.push(task);
-    renderTasks();
-}
-
-function deleteTask(id){
-    tasks = tasks.filter(task => task.id !== id);
-    rendertasks();
-}
-
-function toggleTask(id){
-    tasks = tasks.map(task => {
-        if(task.id === id){
-            return {
-                ...task, 
-                completed: !task.completed
-            };
-        }
-        return task;
-    });
-    renderTasks();
-}
+// sare button ko bhi karlo 
 
 
-// change priority
-// get peding tasks
-// get completed tasks
-// get high prority tasks
-// sort by priority
-function sortByPriority(taskArray){
-    const priorityOrder = {
-        high: 1,
-        mediu: 2, 
-        low: 3
-    };
 
-    return [...taskArray].sort((a, b) => {
-        return (
-            priorityOrder[a.priority] - priorityOrder[b.priority]
-        );
-    });
-}
-
-// get overDue Tasks
+from.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(title.value);
+    console.log(priority.value);
+    title.value = "";
+});
