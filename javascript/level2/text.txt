@@ -1,0 +1,19 @@
+Level3 - undo/ redo Editor
+
+-> we are building a simple text editor. 
+
+what features we have to add in that
+-> type text
+
+->Delete text
+
+-> Replace the current text. 
+
+-> Undo the last chnage. 
+
+-> Redo an undone chnage. 
+
+-> Get the current text at any time.
+
+
+that i am thinking -> 
