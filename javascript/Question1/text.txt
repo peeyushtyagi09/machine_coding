@@ -1,0 +1,20 @@
+okk hum ek form validation engine create karna h. 
+requirement ->
+    1. name
+    2. email
+    3. password
+    4. age
+
+The form should:
+
+Validate fields while the user is typing.
+
+--> ye kaise ho gga koi idea 
+
+
+Show an error message below a field when its value is invalid.
+Remove the error immediately when the value becomes valid.
+Password and Confirm Password must match.
+The submit button should remain disabled while the form is invalid.
+On successful submission, prevent the page reload and display the submitted data below the form.
+The user should be able to reset the form and start again.
