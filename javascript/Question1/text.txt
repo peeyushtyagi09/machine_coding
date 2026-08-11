@@ -10,6 +10,9 @@ The form should:
 Validate fields while the user is typing.
 
 --> ye kaise ho gga koi idea 
+    bahi name ka tho ho jaya ab email and passowrd it bari h
+
+ok validation tho sab ke liye complete ho gaya h.... 
 
 
 Show an error message below a field when its value is invalid.

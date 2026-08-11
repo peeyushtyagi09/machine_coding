@@ -12,29 +12,17 @@ const email_error = document.getElementById("email_error");
 
 // password
 const password = document.getElementById("password"); 
-const password_error = document.getElementById("password_error");
+const password_error = document.getElementById("password-error");
 
 // confirm password
 const confirm_password = document.getElementById("confirm-password");
-const confirm_password_error = document.getElementById("confirm_password_error");
+const confirm_password_error = document.getElementById("confirm-password-error");
 
 // buttons
 const submit_btn = document.getElementById("submit-btn");
 const reset_btn = document.getElementById("reset-btn");
 
-
-// name.addEventListener("input", (e) => {
-//     console.log(e.target.value);
-//     name_error.innerText = "";
-//     let val = e.target.value;
-//     if(val.trim() == " "){
-//         name.innerText = `
-//             <h1>name is required</h1>
-//         `;
-//     }
-//     return;
-// })
-
+// name validation
 name.addEventListener("input", (e) => {
     let val = e.target.value.trim();
    if(val === ""){
@@ -42,4 +30,36 @@ name.addEventListener("input", (e) => {
    }else{
     name_error.innerText = "";
    }
+});
+
+// email validation
+email.addEventListener("input", (e) => {
+    let val = e.target.value.trim();
+    // simple email regex
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(val === "") {
+        email_error.innerText = "email is required";
+    } else if (!emailPattern.test(val)) {
+        email_error.innerText = "please enter a valid email";
+    } else {
+        email_error.innerText = "";
+    }
+});
+
+password.addEventListener("input", (e) => {
+    let val = e.target.value;
+    if(val.length < 8){
+        password_error.innerText = "password must be 8 characters";
+    }else{
+        password_error.innerText = "";
+    }
+});
+
+confirm_password.addEventListener("input", (e) => {
+    let val = e.target.value;
+    if(val !==  password.value){
+        confirm_password_error.innerText = "comfirm password is not equal to password";
+    }else{
+        confirm_password_error.innerText = "";
+    }
 });
