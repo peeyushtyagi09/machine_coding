@@ -12,12 +12,18 @@ Validate fields while the user is typing.
 --> ye kaise ho gga koi idea 
     bahi name ka tho ho jaya ab email and passowrd it bari h
 
-ok validation tho sab ke liye complete ho gaya h.... 
+ok validation tho sab ke liye complete ho gaya h.... ✅
 
 
 Show an error message below a field when its value is invalid.
+-> ye bhi ho gaya h ✅
 Remove the error immediately when the value becomes valid.
+-> ye bhi kaam kar raha h ✅
 Password and Confirm Password must match.
+-> ye bhi kaam kar raha h ✅
 The submit button should remain disabled while the form is invalid.
+-> ye kaise ho ga ab 
+
 On successful submission, prevent the page reload and display the submitted data below the form.
+-> ab ye kar raha hu me phale
 The user should be able to reset the form and start again.
