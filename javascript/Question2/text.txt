@@ -5,14 +5,24 @@ that things i have to do in that ---->
 The user should be able to:
 
 Search products by name.
+-> ok ye bhi done h...
 Filter products by category.
+-> 
 Sort products by price: low → high.
+-> ye bhi ho gaya
 Sort products by price: high → low.
+-> ye bhi ho gaya okkk
 Combine search + category filter + sorting.
+->
 Show the number of products currently visible.
+-> ok ye bhi hogaya
 Display "No products found" when nothing matches.
+-> ye bhi hoga
 Additional requirement
 
 The user should not need to press a Search button.
+-> ye toh phale se he done hai.
 
 first thing that we have to do is that ki data fetch kar ke render karana h.
+
+-> ab hum ne data ko fetch and render kar liya h.....

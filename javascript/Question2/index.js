@@ -1,6 +1,9 @@
 const API_URL = "https://dummyjson.com/products";
 
 const allProducts = document.getElementById('allProducts');
+const input = document.getElementById('input');
+const categorySelect = document.getElementById('category-select');
+const sortSelect = document.getElementById('sort-select');
 
 let products = [];
 
@@ -43,3 +46,38 @@ function renderProducts(productsArr = products) {
         </div>
     `;
 }
+
+
+input.addEventListener('input', (e) => {
+    let val = e.target.value.toLowerCase().trim();
+    const filterProducts = products.filter(product =>
+        product.title.toLowerCase().includes(val) ||
+        product.category.toLowerCase().includes(val)
+    );
+    renderProducts(filterProducts);
+});
+
+categorySelect.addEventListener("change", (e) => {
+    let val = e.target.value.toLowerCase();
+    let filterProducts;
+    if (val === "") {
+        filterProducts = products; 
+    } else {
+        filterProducts = products.filter(product => product.category.toLowerCase() === val);
+    }
+    renderProducts(filterProducts);
+});
+
+
+sortSelect.addEventListener("change", (e) => {
+    let val = e.target.value.toLowerCase();
+    let sortedProducts = [...products];
+    if(val === ""){
+        sortedProducts = products;
+    }else if(val === "asc"){
+        sortedProducts.sort((a, b) => a.price - b.price);
+    }else{
+        sortedProducts.sort((a, b) => b.price - a.price);
+    }
+    renderProducts(sortedProducts);
+});

@@ -3,13 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic HTML Template</title>
+    <title>Product List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #e3f3fd 0%, #f5eafa 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 36px auto 0 auto;
+            padding: 22px 18px 38px 18px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 3px 22px rgba(19,32,51,0.11), 0 0.5px 1px rgba(0,0,0,.05);
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            align-items: flex-end;
+            margin-bottom: 28px;
+        }
+        .controls > div {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        label {
+            font-size: 1em;
+            color: #2563eb;
+            font-weight: 700;
+        }
+        #input {
+            padding: 11px 13px;
+            border: 2px solid #90caf9;
+            border-radius: 8px;
+            font-size: 1.05em;
+            width: 220px;
+            background: #f0f6fd;
+            transition: border-color 0.18s, box-shadow 0.15s;
+            color: #184978;
+        }
+        #input:focus {
+            border-color: #2563eb;
+            background: #fff;
+            outline: none;
+            box-shadow: 0 0 7px rgba(37,99,235,0.17);
+        }
+        select {
+            padding: 9px 10px;
+            border-radius: 8px;
+            border: 2px solid #e1bee7;
+            font-size: 1.04em;
+            background: #fafbfd;
+            transition: border-color 0.18s, box-shadow 0.14s;
+            color: #7f1873;
+        }
+        select:focus {
+            border-color: #ba68c8;
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 7px rgba(186,104,200,0.17);
+        }
+        .product-count {
+            font-size: 1.12em;
+            font-weight: 700;
+            margin-bottom: 13px;
+            color: #1b305b;
+            letter-spacing: .13px;
+            background: linear-gradient(to right, #c2e9fb, #e0c3fc);
+            border-radius: 8px;
+            padding: 6px 18px;
+            display: inline-block;
+            box-shadow: 0 1px 4px rgba(30,67,158,0.08);
+        }
+        #allProducts {
+            margin-top: 12px;
+        }
+        /* UI for product card @index.js (see lines 30-42) */
+        .product-card {
+            border: 2px solid #e3eafe;
+            border-radius: 10px;
+            padding: 13px 12px 17px 12px;
+            width: 220px;
+            background: linear-gradient(109deg,#e8f0ff 70%,#f8e9f9 100%);
+            box-shadow: 0 2px 7px rgba(97,120,237, 0.10);
+            transition: box-shadow 0.2s, border-color 0.15s;
+        }
+        .product-card:hover {
+            border-color: #3f51b5;
+            box-shadow: 0 3px 18px rgba(80,108,235,0.18);
+            transform: translateY(-3px) scale(1.025);
+        }
+        .product-title {
+            font-size: 1.13em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #31458a;
+            text-shadow: 0 1px 0 rgba(196,220,255,0.22);
+        }
+        .product-img {
+            width:100%;
+            border-radius: 6px;
+            min-height: 120px;
+            object-fit: cover;
+            background: #dde5fb;
+            margin-bottom: 10px;
+            border: 1.5px solid #dde1ef;
+        }
+        .product-price {
+            font-weight: 600;
+            color: #156153;
+            font-size: 1em;
+            background: #d6ffe3;
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 13px;
+            margin-bottom: 5px;
+        }
+        .product-category {
+            font-size: 0.96em;
+            color: #af3fd6;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+        @media (max-width: 900px) {
+            .product-card { width: 45vw; min-width: 170px;}
+        }
+        @media (max-width: 700px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            .controls {
+                flex-direction: column;
+                gap: 14px 0;
+            }
+            .product-card { width: 98vw; min-width: 120px; }
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <div id="allProducts">
-
+    <div class="container">
+        <h2 style="margin-top:0; margin-bottom:18px; color:#3f51b5; letter-spacing:-1.5px; text-shadow: 1px 1px 0 #ddeafd;">Product List</h2>
+        <div class="controls">
+            <div>
+                <label for="input">Search</label>
+                <input id="input" type="text" placeholder="Search product name..." autocomplete="off" />
+            </div>
+            <div>
+                <label for="category-select">Category</label>
+                <!-- You'll fill options dynamically in JS -->
+                <select id="category-select">
+                    <option value="">All</option>
+                    <option value="beauty">beauty</option>
+                    <option value="furniture">furniture</option>
+                    <option value="groceries">groceries</option>
+                </select>
+            </div>
+            <div>
+                <label for="sort-select">Sort by Price</label>
+                <select id="sort-select">
+                    <option value="">Default</option>
+                    <option value="asc">Low → High</option>
+                    <option value="desc">High → Low</option>
+                </select>
+            </div>
         </div>
+        <div class="product-count" id="productsCount"></div>
+        <div id="allProducts"></div>
     </div>
     <script src="index.js"></script>
 </body>
