@@ -16,7 +16,7 @@ const expense_title_error = document.getElementById("expense_title_error");
 const expense_id_error = document.getElementById("expense_id_error");
 const expense_amount_error = document.getElementById("expense_amount_error");
 const expense_category_error = document.getElementById("expense_category_error");
-const form_error = document.getElementById("")
+const form_error = document.getElementById("form_error");
 
 // buttons
 const submitBtn = document.getElementById("submit_btn");
@@ -134,18 +134,6 @@ function renderexpenses({ array = expenses }){
 }
 
 function create({ id, title, category, amount, date}){
-    if (
-        id.trim() === "" ||
-        title.trim() === "" ||
-        category.trim() === "" ||
-        amount.trim() === "" ||
-        date.trim() === ""
-    ) {
-        return;
-        
-    }
-        
-    }
     const task = {
          id: id, 
          title: title, 
@@ -165,5 +153,21 @@ addExpense.addEventListener("submit", (e) => {
     let amount = expense_amount.value;
     let category = expense_category.value;
     let date = expense_date.value;
-    create({ id, title, category, amount, date})
+        if (
+            id.trim() === "" ||
+            title.trim() === "" ||
+            category.trim() === "" ||
+            amount.trim() === "" ||
+            date.trim() === ""
+        ) {
+    
+            form_error.innerHTML = " <h1>all fileld are require</h1>";
+            form_error.style.display = "block";
+            submitBtn.disabled = true;
+            // return; 
+        }else{  
+            create({ id, title, category, amount, date})
+            form_error.style.display = "none";
+            submitBtn.disabled = false;
+        }
 })
