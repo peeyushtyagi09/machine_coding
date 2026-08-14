@@ -1,0 +1,12 @@
+
+The user should be able to:
+
+Create a new task.
+Delete a task.
+Move a task between the three columns.
+Change task priority.
+Search tasks by title.
+Filter tasks by priority.
+Display the number of tasks in each column.
+Combine search + priority filtering.
+Clear the search/filter and restore the complete board.

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kanban Task Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main {
+            background: #fff;
+            box-shadow: 0 4px 32px #e2e8f0;
+            border-radius: 14px;
+            padding: 32px 30px 24px 30px;
+            max-width: 360px;
+            width: 100%;
+            margin: 18px;
+        }
+        h2 {
+            text-align: center;
+            color: #3f51b5;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: 600;
+            color: #324385;
+            margin-bottom: 6px;
+        }
+        input[type="text"] {
+            padding: 10px 12px;
+            border: 1.3px solid #dee3ef;
+            border-radius: 7px;
+            transition: border-color 0.2s;
+            font-size: 1em;
+            background: #f9fbff;
+        }
+        input[type="text"]:focus {
+            border-color: #757de8;
+            outline: none;
+            background: #fff;
+        }
+        .field-container {
+            display: flex;
+            flex-direction: column;
+        }
+        button[type="submit"] {
+            padding: 11px 0;
+            background: linear-gradient(90deg, #3f51b5 80%, #7c4dff);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.08em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: background 0.18s, box-shadow 0.14s;
+            box-shadow: 0 1px 8px #dde3f6;
+        }
+        button[type="submit"]:hover, button[type="submit"]:focus {
+            background: linear-gradient(90deg, #303f9f 60%, #512da8);
+            box-shadow: 0 2px 18px #d1d8f7;
+        }
+        @media (max-width: 520px) {
+            .main {
+                padding: 20px 6vw 16px 6vw;
+                max-width: 98vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>New Task</h2>
+        <form id="createTask" autocomplete="off">
+            <div class="field-container">
+                <label for="taskId">Task ID</label>
+                <input type="text" id="taskId" name="id" placeholder="e.g. 101" required>
+            </div>
+            <div class="field-container">
+                <label for="taskTitle">Title</label>
+                <input type="text" id="taskTitle" name="title" placeholder="Enter task title" required>
+            </div>
+            <div class="field-container">
+                <label for="taskPriority">Priority</label>
+                <input type="text" id="taskPriority" name="priority" placeholder="Low, Medium, High" required>
+            </div>
+            <button type="submit">Create Task</button>
+        </form>
+        <div id="alltasks">
+
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
