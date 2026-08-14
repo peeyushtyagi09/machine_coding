@@ -23,10 +23,16 @@ const resetBtn = document.getElementById("reset_btn");
 
 let expenses = [];
 
-resetBtn.addEventListener
+function empty(){
+    expense_id.value = "";
+    expense_title.value = "";
+    expense_amount.value = "";
+    expense_category.value = "";
+    expense_date.value = "";
+};
 
-addExpense.addEventListener("submit", (e) => {
-    
+resetBtn.addEventListener("click", () => {
+    empty();
 })
 
 expense_category.addEventListener("input", (e) => {
@@ -41,7 +47,7 @@ expense_category.addEventListener("input", (e) => {
     }else{
         expense_category_error.textContent = "";
         expense_category_error.style.display = "none";
-        submitBtn.disabled = 'false';
+        submitBtn.disabled = false;
         submitBtn.style.color = '';
     }
 })
@@ -56,14 +62,23 @@ expense_title.addEventListener("input", (e) => {
     }else{
         expense_title_error.textContent = "";
         expense_title_error.style.display = "none";
-        submitBtn.disabled = 'false';
+        submitBtn.disabled = false;
         submitBtn.style.color = '';
     }
 });
 
 
 function create({ id, title, category, amount, date}){
-    
+    const task = {
+         id: id, 
+         title: title, 
+         category: category, 
+         amount: amount, 
+         date: date,
+    }
+    expenses.push(task);
+    empty();
+    renderexpenses(tasks);
 }
 
 addExpense.addEventListener("submit", (e) => {

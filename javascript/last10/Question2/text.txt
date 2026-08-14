@@ -1,3 +1,5 @@
 ok ab hum ko kya-kya karna h. 
 
 -> first thing is add an expense.
+-> ye tho done ho gaya
+-> now i am working on render it..
