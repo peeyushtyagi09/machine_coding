@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #4267b2;
+            --accent: #61dafb;
+            --background: #f7f9fa;
+            --border: #e1e6ee;
+            --danger: #ff5252;
+            --radius: 10px;
+        }
+        body {
+            margin: 0;
+            background: var(--background);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #24334c;
+        }
+        #main {
+            max-width: 430px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 20px #ced9ea55;
+            border-radius: var(--radius);
+            padding: 36px 24px 24px 24px;
+        }
+        h2 {
+            font-weight: 700;
+            margin-bottom: 22px;
+            color: var(--primary);
+            letter-spacing: .5px;
+        }
+        form#addExpense {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 1.6px solid var(--border);
+            padding-bottom: 22px;
+            margin-bottom: 16px;
+        }
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        label {
+            font-weight: 500;
+            color: #415072;
+            margin-bottom: 0;
+            margin-left: 2px;
+        }
+        input[type="number"],
+        input[type="string"],
+        input[type="text"] {
+            padding: 9px 11px;
+            border: 1.5px solid var(--border);
+            border-radius: 7px;
+            font-size: 1em;
+            background: #f4f7fc;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: #fff;
+        }
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        button[type="submit"] {
+            background: linear-gradient(90deg, var(--primary) 90%, var(--accent));
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 1.04em;
+            font-weight: 600;
+            padding: 10px 0;
+            flex: 1 0 0px;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.15s;
+            box-shadow: 0 1px 7px #dde3f6;
+        }
+        button[type="submit"]:hover,
+        button[type="submit"]:focus {
+            background: linear-gradient(90deg, #294c89 70%, #395980);
+            box-shadow: 0 2px 15px #d1d8f7;
+        }
+        button[type="button"], button[type="reset"] {
+            background: #fff;
+            color: var(--danger);
+            border: 1.2px solid var(--danger);
+            border-radius: 7px;
+            font-weight: 600;
+            padding: 10px 0;
+            flex: 1 0 0px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        button[type="button"]:hover,
+        button[type="reset"]:hover {
+            background: var(--danger);
+            color: #fff;
+            border-color: var(--danger);
+        }
+        #search {
+            width: 100%;
+            margin: 18px 0 12px 0;
+            padding: 9px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 7px;
+            font-size: 1em;
+            background: #f5f8fe;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        #search:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: #fff;
+        }
+        #allExpense {
+            margin-top: 5px;
+            min-height: 50px;
+        }
+        @media (max-width: 500px) {
+            #main {
+                padding: 18px 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+   <div id="main">
+        <h2>Add Expense</h2>
+        <form id="addExpense" autocomplete="off" novalidate>
+            <div class="field-group">
+                <label for="expense_id">Expense ID</label>
+                <input id="expense_id" type="number" required placeholder="eg. 1"/>
+                <div id="expense_id_error" class="error-message" style="color: red; font-size: 0.96em; display:none;"></div>
+            </div>
+            <div class="field-group">
+                <label for="expense_title">Title</label>
+                <input id="expense_title" type="text" required placeholder="Description (e.g. Uber, Groceries)"/>
+                <div id="expense_title_error" class="error-message" style="color: red; font-size: 0.96em; display:none;"></div>
+            </div>
+            <div class="field-group">
+                <label for="expense_amount">Amount ($)</label>
+                <input id="expense_amount" type="number" required placeholder="eg. 14.99" min="0" step="0.01"/>
+                <div id="expense_amount_error" class="error-message" style="color: red; font-size: 0.96em; display:none;"></div>
+            </div>
+            <div class="field-group">
+                <label for="expense_category">Category</label>
+                <input id="expense_category" type="text" required placeholder="eg. Food, Travel, Shopping"/>
+                <div id="expense_category_error" class="error-message" style="color: red; font-size: 0.96em; display:none;"></div>
+            </div>
+            <div class="field-group">
+                <label for="expense_date">Date</label>
+                <input id="expense_date" type="date" required/>
+                <div id="expense_date_error" class="error-message" style="color: red; font-size: 0.96em; display:none;"></div>
+            </div>
+            <div class="form-actions">
+                <button id="submit_btn" type="submit">Add Expense</button>
+                <button id="reset_btn" type="reset">Reset</button>
+            </div>
+        </form>
+
+        <div>
+            <input id="search" type="text" placeholder="Search expenses..."/>
+            <div id="allExpense"></div>
+        </div>
+   </div>
+   <script src="index.js"></script>
+</body>
+</html>
