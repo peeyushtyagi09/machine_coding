@@ -4,3 +4,8 @@ ok ab hum ko kya-kya karna h.
 -> ye tho done ho gaya
 -> now i am working on render it..
 -> ok ab render ka bhi perfect kaam kar raha h...
+
+-> Display the total amount spent.
+-> ye bhi ho gaya done h.
+
+->

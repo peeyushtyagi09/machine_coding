@@ -10,6 +10,7 @@ const expense_title = document.getElementById("expense_title");
 const expense_amount = document.getElementById("expense_amount");
 const expense_category = document.getElementById("expense_category");
 const expense_date = document.getElementById("expense_date");
+const totalexpenses = document.getElementById("totalexpenses");
 
 // errors
 const expense_title_error = document.getElementById("expense_title_error");
@@ -118,6 +119,7 @@ expense_title.addEventListener("input", (e) => {
 });
 
 function renderexpenses({ array = expenses }){
+    totalexpenses.innerText = array.length;
     if(array.length === 0){
         allExpense.innerHTML = "<h1> No products found </h1>"
     }else{
