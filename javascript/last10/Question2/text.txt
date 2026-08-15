@@ -8,4 +8,5 @@ ok ab hum ko kya-kya karna h.
 -> Display the total amount spent.
 -> ye bhi ho gaya done h.
 
-->
+-> i think now i have to Display the total amount spent.
+-> done ye bhi ho gaya h.

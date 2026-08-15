@@ -10,3 +10,4 @@
 10.what is seo, why it is important what is the need and work of it and why it is not work in csr and how it is realted to indexing.
 11. storage type what when where why and how
 12. how to create and use of all the data structure 
+13. jab bhi tum ko string se int me convert karna thota h js me tho hum parseFloat ke help se kar sakte h .okk
