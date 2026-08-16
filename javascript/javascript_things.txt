@@ -11,3 +11,5 @@
 11. storage type what when where why and how
 12. how to create and use of all the data structure 
 13. jab bhi tum ko string se int me convert karna thota h js me tho hum parseFloat ke help se kar sakte h .okk
+14. the filter function does not return anything. so it always returns undefined,
+whhich is falsy. You need to add a return statement.

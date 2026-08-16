@@ -1,6 +1,4 @@
-// The main mistake in the provided code is using <h1> inside the error message when showing form validation errors, which is not appropriate for inline or small error messages in forms.
-// Additionally, clearing the error by setting `innerHTML` to an empty string is fine, but the display property (like style.display) should be managed to hide/show the error div for accessibility and better UI.
-// Here's how you should do error handling for this scenario:
+// not working what mistake i am dong in filter 
 
 const addExpense = document.getElementById("addExpense");
 
@@ -26,6 +24,9 @@ const resetBtn = document.getElementById("reset_btn");
 
 // render
 const allExpense = document.getElementById("allExpense");
+
+// filter
+const search = document.getElementById("search");
 
 let expenses = [];
 
@@ -94,8 +95,8 @@ expense_category.addEventListener("input", (e) => {
         expense_category_error.style.display = "block";
         submitBtn.disabled = true;
         submitBtn.style.color = 'grey';
-   
-   
+
+
     }else{
         expense_category_error.textContent = "";
         expense_category_error.style.display = "none";
@@ -169,7 +170,7 @@ addExpense.addEventListener("submit", (e) => {
             amount.trim() === "" ||
             date.trim() === ""
         ) {
-    
+
             form_error.innerHTML = " <h1>all fileld are require</h1>";
             form_error.style.display = "block";
             submitBtn.disabled = true;
@@ -180,3 +181,29 @@ addExpense.addEventListener("submit", (e) => {
             submitBtn.disabled = false;
         }
 })
+
+
+//  Search expenses by title
+search.addEventListener("input", (e) => {
+    const val = e.target.value.toLowerCase().trim();
+
+    let filteredExpenses;
+    if (val === "") {
+        // If nothing is typed, show all expenses
+        filteredExpenses = expenses;
+    } else {
+        // Agar filter me return mat kro ya kuch bhi na likho, toh result empty aayega.
+        // Galti: Yeh incorrect hai --
+        // filteredExpenses = expenses.filter(exp => {
+        //    exp.title && exp.title.toLowerCase().includes(val); // mistake: no return, undefined is always falsy
+        // });
+        // Sahi tarika: return likhna zaroori hai.
+        filteredExpenses = expenses.filter(exp => {
+            return exp.title && exp.title.toLowerCase().includes(val);
+        });
+        // ya aise bhi likh sakte ho (implicit return):
+        // filteredExpenses = expenses.filter(exp => exp.title && exp.title.toLowerCase().includes(val));
+    }
+
+    renderexpenses(filteredExpenses);
+});
