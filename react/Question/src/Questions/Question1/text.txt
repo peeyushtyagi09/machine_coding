@@ -1,0 +1,16 @@
+-> from that Question i am starting react
+---> first we have fetch the data
+:- jo ki hogaya h
+----> next thing we have to render the data. 
+
+----> search employees by name. 
+
+----> filter employees by department. 
+
+---->  Combine Search + department. 
+
+----> clear the search. 
+
+----> Reset all filters. 
+
+----> Display the number of employees currently visible.
