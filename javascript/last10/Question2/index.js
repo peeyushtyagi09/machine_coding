@@ -120,13 +120,13 @@ expense_title.addEventListener("input", (e) => {
     }
 });
 
-function renderexpenses({ array = expenses }){
+function renderexpenses({ array }){
     totalexpenses.innerText = array.length;
     let sum = 0;
     array.forEach(e => {
         sum += parseFloat(e.amount);
     });
-
+    console.log("render", array);
     totalAmount.innerText = `${sum}`;
     if(array.length === 0){
         allExpense.innerHTML = "<h1> No products found </h1>"
@@ -153,7 +153,7 @@ function create({ id, title, category, amount, date}){
     }
     expenses.push(task);
     empty();
-    renderexpenses(expenses);
+    renderexpenses({ array: expenses});
 }
 
 addExpense.addEventListener("submit", (e) => {
@@ -186,24 +186,16 @@ addExpense.addEventListener("submit", (e) => {
 //  Search expenses by title
 search.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
-
+    console.log(val)
     let filteredExpenses;
     if (val === "") {
-        // If nothing is typed, show all expenses
         filteredExpenses = expenses;
     } else {
-        // Agar filter me return mat kro ya kuch bhi na likho, toh result empty aayega.
-        // Galti: Yeh incorrect hai --
-        // filteredExpenses = expenses.filter(exp => {
-        //    exp.title && exp.title.toLowerCase().includes(val); // mistake: no return, undefined is always falsy
-        // });
-        // Sahi tarika: return likhna zaroori hai.
+
         filteredExpenses = expenses.filter(exp => {
             return exp.title && exp.title.toLowerCase().includes(val);
         });
-        // ya aise bhi likh sakte ho (implicit return):
-        // filteredExpenses = expenses.filter(exp => exp.title && exp.title.toLowerCase().includes(val));
-    }
-
-    renderexpenses(filteredExpenses);
+  }
+    console.log(filteredExpenses)
+    renderexpenses({array: filteredExpenses});
 });
