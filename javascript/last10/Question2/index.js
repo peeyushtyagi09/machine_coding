@@ -21,6 +21,7 @@ const form_error = document.getElementById("form_error");
 // buttons
 const submitBtn = document.getElementById("submit_btn");
 const resetBtn = document.getElementById("reset_btn");
+const deleteBtn = document.getElementById("delete_btn");
 
 // render
 const allExpense = document.getElementById("allExpense");
@@ -138,10 +139,26 @@ function renderexpenses({ array }){
                 <div><strong>Category:</strong> ${exp.category}</div>
                 <div><strong>Amount:</strong> $${exp.amount}</div>
                 <div><strong>Date:</strong> ${exp.date}</div>
+                <button id="delete_btn" data-id="${exp.id}">Delete</button>
             </div>`
+       
         ).join('');
     }
 }
+
+// allExpense.addEventListener("click", (e) => {
+//     if(e.target && e.target.matches("button#delete_btn")) {
+//         const idToDelete = e.target.getAttribute("data-id");
+//         // Remove the expense with matching id
+//         expenses = expenses.filter(exp => exp.id !== idToDelete);
+//         renderexpenses({ array: expenses });
+//     }
+// });
+
+deleteBtn.addEventListener("click", (e) => {
+    expenses = expenses.filter(exp => exp.id !== e.id);
+    renderexpenses(expenses);
+})
 
 function create({ id, title, category, amount, date}){
     const task = {

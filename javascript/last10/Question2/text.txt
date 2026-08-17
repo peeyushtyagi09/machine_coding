@@ -14,6 +14,7 @@ ok ab hum ko kya-kya karna h.
 
 now what is remaining 
 1. delete an expense. 
+-> ab me ye karne ja raha hu okk.
 2. edit an existing expense. 
 3. Search expenses by title
 -> ab hum phale ye kar rahe h. okk
