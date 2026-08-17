@@ -1,0 +1,39 @@
+at this time we are doing that Question no excuses
+
+ok what we have to create i that QUestion
+ --> we have a frontend application that needs to perform many asynchronous tasks. 
+
+
+ requiremnets -> your queue should support: 
+            -> queue.add(task)
+            -> Each task returns a Promise. 
+            queue.add(() => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        console.log("Task finished");
+                        resolve("result");
+                    }, 1000);
+                });
+            });
+
+    The add() method should return a Promise so the caller can reveive that
+    task's result.
+
+    The queue should: 
+    .Never exceed the given concurrency limit. 
+    start waiting tasks automaticcaly when a running task finishes. 
+    . handle tasks that resolve. 
+    . handle tasks that reject. 
+    . continue processing the remaning queue if one task fails.
+    . preserve each task's own result/rejection 
+    . Allow tasks to be added even while other tasks are running 
+
+
+what i am thinking is that i 
+-> first i will create a queue
+-> then i create  a "n" that is over limit 
+-> then i create two array first is resolvetasks and rejectedtasks 
+
+
+what wrong in my thinking is that ki i am thinking 
+-> is that i am not creating i running for thr current for tracking the currentlty running 

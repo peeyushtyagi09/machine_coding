@@ -21,7 +21,6 @@ const form_error = document.getElementById("form_error");
 // buttons
 const submitBtn = document.getElementById("submit_btn");
 const resetBtn = document.getElementById("reset_btn");
-// const deleteBtn = document.getElementById("delete_btn");
 
 // render
 const allExpense = document.getElementById("allExpense");
@@ -30,6 +29,7 @@ const allExpense = document.getElementById("allExpense");
 const search = document.getElementById("search");
 
 let expenses = [];
+let editingExpenseId = null; // Track which expense is being edited, if any
 
 function empty(){
     expense_id.value = "";
@@ -37,6 +37,8 @@ function empty(){
     expense_amount.value = "";
     expense_category.value = "";
     expense_date.value = "";
+    editingExpenseId = null; // Clear edit state when empty is called
+    submitBtn.textContent = "Add Expense";
 };
 
 resetBtn.addEventListener("click", () => {
@@ -76,15 +78,19 @@ expense_amount.addEventListener("input", (e) => {
 expense_date.addEventListener("input", (e) => {
     let val = e.target.value.trim();
     if(val === ""){
-        expense_date_error.textContent = "Date is required.";
-        expense_date_error.style.display = "block";
-        submitBtn.disabled = true;
-        submitBtn.style.color = 'grey';
+        if(window.expense_date_error) {
+            expense_date_error.textContent = "Date is required.";
+            expense_date_error.style.display = "block";
+            submitBtn.disabled = true;
+            submitBtn.style.color = 'grey';
+        }
     }else{
-        expense_date_error.textContent = "";
-        expense_date_error.style.display = "none";
-        submitBtn.disabled = false;
-        submitBtn.style.color = '';
+        if(window.expense_date_error) {
+            expense_date_error.textContent = "";
+            expense_date_error.style.display = "none";
+            submitBtn.disabled = false;
+            submitBtn.style.color = '';
+        }
     }
 });
 
@@ -96,7 +102,6 @@ expense_category.addEventListener("input", (e) => {
         expense_category_error.style.display = "block";
         submitBtn.disabled = true;
         submitBtn.style.color = 'grey';
-
 
     }else{
         expense_category_error.textContent = "";
@@ -127,7 +132,6 @@ function renderexpenses({ array }){
     array.forEach(e => {
         sum += parseFloat(e.amount);
     });
-    console.log("render", array);
     totalAmount.innerText = `${sum}`;
     if(array.length === 0){
         allExpense.innerHTML = "<h1> No products found </h1>"
@@ -140,8 +144,8 @@ function renderexpenses({ array }){
                 <div><strong>Amount:</strong> $${exp.amount}</div>
                 <div><strong>Date:</strong> ${exp.date}</div>
                 <button id="delete_btn" data-id="${exp.id}">Delete</button>
+                <button id="Edit_btn" data-id="${exp.id}">Edit</button>
             </div>`
-       
         ).join('');
     }
 }
@@ -152,25 +156,60 @@ allExpense.addEventListener("click", (e) => {
         // Remove the expense with matching id
         expenses = expenses.filter(exp => exp.id !== idToDelete);
         renderexpenses({ array: expenses });
+        // If we're currently editing this expense, cancel editing
+        if(editingExpenseId === idToDelete) {
+            empty();
+        }
     }
 });
 
-// deleteBtn.addEventListener("click", (e) => {
-//     expenses = expenses.filter(exp => exp.id !== e.id);
-//     renderexpenses(expenses);
-// })
+allExpense.addEventListener("click", (e) => {
+    if(e.target && e.target.matches("button#Edit_btn")){
+        const idToEdit = e.target.getAttribute("data-id");
+        const expenseToEdit = expenses.find(exp => exp.id === idToEdit);
+        if(expenseToEdit) {
+            expense_id.value = expenseToEdit.id;
+            expense_title.value = expenseToEdit.title;
+            expense_amount.value = expenseToEdit.amount;
+            expense_category.value = expenseToEdit.category;
+            expense_date.value = expenseToEdit.date;
 
-function create({ id, title, category, amount, date}){
+            expense_title.focus();
+
+            // Set editingExpenseId so submit will update in-place
+            editingExpenseId = idToEdit;
+            submitBtn.textContent = "Update Expense";
+
+            // (Optional UX) Scroll to the form
+            if(addExpense.scrollIntoView) {
+                addExpense.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }
+});
+
+function create({ id, title, category, amount, date}) {
     const task = {
-         id: id, 
-         title: title, 
-         category: category, 
-         amount: amount, 
-         date: date,
+        id: id, 
+        title: title, 
+        category: category, 
+        amount: amount, 
+        date: date,
     }
     expenses.push(task);
     empty();
-    renderexpenses({ array: expenses});
+    renderexpenses({ array: expenses });
+}
+
+function updateExpense({ id, title, category, amount, date }) {
+    expenses = expenses.map(exp => {
+        if(exp.id === id) {
+            return { id, title, category, amount, date };
+        }
+        return exp;
+    });
+    empty();
+    renderexpenses({ array: expenses });
 }
 
 addExpense.addEventListener("submit", (e) => {
@@ -180,39 +219,42 @@ addExpense.addEventListener("submit", (e) => {
     let amount = expense_amount.value;
     let category = expense_category.value;
     let date = expense_date.value;
-        if (
-            id.trim() === "" ||
-            title.trim() === "" ||
-            category.trim() === "" ||
-            amount.trim() === "" ||
-            date.trim() === ""
-        ) {
 
-            form_error.innerHTML = " <h1>all fileld are require</h1>";
-            form_error.style.display = "block";
-            submitBtn.disabled = true;
-            // return; 
-        }else{  
-            create({ id, title, category, amount, date})
-            form_error.style.display = "none";
-            submitBtn.disabled = false;
+    if (
+        id.trim() === "" ||
+        title.trim() === "" ||
+        category.trim() === "" ||
+        amount.trim() === "" ||
+        date.trim() === ""
+    ) {
+        form_error.innerHTML = " <h1>All fields are required</h1>";
+        form_error.style.display = "block";
+        submitBtn.disabled = true;
+    } else {
+        form_error.style.display = "none";
+        submitBtn.disabled = false;
+
+        if (editingExpenseId) {
+            // Update logic
+            updateExpense({ id, title, category, amount, date });
+        } else {
+            // Add logic
+            create({ id, title, category, amount, date });
         }
+    }
 })
 
 
 //  Search expenses by title
 search.addEventListener("input", (e) => {
     const val = e.target.value.toLowerCase().trim();
-    console.log(val)
     let filteredExpenses;
     if (val === "") {
         filteredExpenses = expenses;
     } else {
-
         filteredExpenses = expenses.filter(exp => {
             return exp.title && exp.title.toLowerCase().includes(val);
         });
-  }
-    console.log(filteredExpenses)
+    }
     renderexpenses({array: filteredExpenses});
 });

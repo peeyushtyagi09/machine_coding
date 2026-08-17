@@ -16,8 +16,11 @@ now what is remaining
 1. delete an expense. 
 -> ab me ye karne ja raha hu okk.
 2. edit an existing expense. 
+-> ab me ye karne ja raha hu okk.
 3. Search expenses by title
 -> ab hum phale ye kar rahe h. okk
 4. filter expenses by category. 
+-> ab ye 
 5. filter expenses by date. 
+-> and ye mere ko pane aap karne h 
 6. 
