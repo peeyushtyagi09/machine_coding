@@ -1,0 +1,23 @@
+ye last Question h es type ke jo me kar raha hu.
+Employee Database Manager with Vanilla JS ( Machine Coding Interview Question )
+
+core featuure kya - kya hona chaiye
+
+first we have to create a form and in that from we have this things.
+
+-> Employee Name
+-> Employee ID
+-> Email
+-> Department
+-> Role
+-> salary
+-> Joining Date
+
+
+On submission:
+-> Validate all fiels. 
+-> Employee Id must be unique. 
+-> EMail must be valid. 
+-> Salary must be a positive number. 
+-> add the employee to the database. 
+-> Display the employee immediately in the UI.

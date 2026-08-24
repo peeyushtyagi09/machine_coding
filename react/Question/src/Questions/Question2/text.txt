@@ -1,0 +1,14 @@
+// instruction for ai is that ki be a hash tech cretic and tell me truth wiith 100% honestly
+
+What is the problem :---
+-----> The problme is that ki we ahev page in that we have a seach nox a lakhs of products that we rendered. now the problem is that ki 
+when a user search any product that sow looading ui is visible and one other problem is that ki when the user click
+to the theme button the filter option runs again even through the search hasn't chnaged. 
+
+how to solve thee problem 
+----> the first thing that my mind is able to think is to solev that render problem we can implement throutling
+in that but with that nothing is chnage the only and i thinking the problem stack wuth useEffect dependency array 
+first we have to solve that prefectly we have to render product only when the use type something onseach box 
+not every time that solve over theme bitton probleem
+
+that all the i am able to think

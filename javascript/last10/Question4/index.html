@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f2f6ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 24px rgba(44, 62, 80, 0.1);
+            width: 100%;
+            max-width: 390px;
+        }
+        .form-header {
+            margin-bottom: 22px;
+            text-align: center;
+        }
+        .form-header h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #224;
+        }
+        .form-group {
+            margin-bottom: 17px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #334;
+            font-weight: 500;
+            letter-spacing: 0.1px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 9px 11px;
+            border-radius: 6px;
+            border: 1px solid #bfc7d1;
+            font-size: 1rem;
+            background: #f9fbfd;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4361ee;
+            outline: none;
+            background: #fff;
+        }
+        .form-group input[type="date"] {
+            color: #727e96;
+        }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(to right, #4361ee, #3f8efc);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            padding: 11px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(to right, #364fc7, #456bdb);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Employee Registration</h2>
+            <p style="color:#667;">Please fill in the details below.</p>
+        </div>
+        <form autocomplete="off">
+            <div class="form-group">
+                <label for="empName">Employee Name</label>
+                <input type="text" id="empName" name="empName" placeholder="e.g. John Doe" required />
+            </div>
+            <div class="form-group">
+                <label for="empId">Employee ID</label>
+                <input type="text" id="empId" name="empId" placeholder="e.g. EMP12345" required />
+            </div>
+            <div class="form-group">
+                <label for="empEmail">Email</label>
+                <input type="email" id="empEmail" name="empEmail" placeholder="e.g. john.doe@example.com" required />
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                    <option value="" disabled selected>Select department</option>
+                    <option>HR</option>
+                    <option>Engineering</option>
+                    <option>Sales</option>
+                    <option>Marketing</option>
+                    <option>Finance</option>
+                    <option>Support</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" placeholder="e.g. Software Engineer" required />
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary" name="salary" min="0" placeholder="e.g. 50000" required />
+            </div>
+            <div class="form-group">
+                <label for="joiningDate">Joining Date</label>
+                <input type="date" id="joiningDate" name="joiningDate" required />
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
