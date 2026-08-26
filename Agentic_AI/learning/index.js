@@ -6,6 +6,8 @@ const model = new ChatMistralAI({
     apiKey: ai_key
 });
 
-const response = await model.invoke("Hello");
+const stream = await model.stream("Write an js code to find a number is prime or not")
 
-console.log(response.text);
+for await (const chunk of stream){
+    process.stdout.write(chunk.text);
+}
