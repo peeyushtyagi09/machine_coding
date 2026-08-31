@@ -20,3 +20,14 @@ Support:
 
 .proper HTTP status codes. 
 .Centrailzed error handling. 
+
+
+what is the approach to solve this.
+what i am thinking is that ki database keliye mongodb ka use kar le ge and then hum first thing karge user ka account
+create kara lege and then us ko database me store kara lege annd login karne ke time hum us ko database se fetch
+kar lege 
+
+and then User dashboard pe aa yega vaha vo tasks create  kar stakta h create kiye hue tasks ko vo fetch bhi 
+kar sakta h and us pe operation bhi preform kar sakata h. 
+
+and then another opertaion bhi kar sakte h.
