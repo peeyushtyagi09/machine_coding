@@ -1,0 +1,22 @@
+Task management REST API
+
+what are the requirements for that...
+1. User can create an account and log in. 
+2. User can create, update, delete and fetch tasks.
+Each task has: 
+.title
+.description
+.status -> todo, in-progress, completed
+priority -> low, medium, high
+duedate
+createAt
+
+User should only be able to access their own tasks. 
+Support:
+.pagination
+.filtering by status
+.filtering by priority
+.sorting by due date. 
+
+.proper HTTP status codes. 
+.Centrailzed error handling. 
