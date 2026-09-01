@@ -32,3 +32,31 @@ kar sakta h and us pe operation bhi preform kar sakata h.
 
 and then another opertaion bhi kar sakte h.
 
+
+
+2. Pehle database design karo
+
+humare pass sirf 2 main collection hain. 
+
+ek hogaya user ka and ek hogaya tasks ka
+
+and us ko implement kaise karna h
+
+users me hamare pass -> id, name, email, password, createAT
+
+and task me hamare pass -> id, title, description, status, priority, dueDate, userId, createAt hoga us me jo most important h vo h
+userId kyo ki hum ko tasks bhi tho render karana ne h user ke according. es liye
+
+and ab hum ko api design kar ni h :---- 
+
+first hum ko api/auth/register
+and then -> api/auth/login
+
+then tasks ki baari h
+
+POST /api/tasks
+GET /api/tasks
+GET /api/tasks/:id
+PATCH /api/tasks/:id
+DELETE /api/tasks/:id
+
