@@ -1,0 +1,27 @@
+Question1 - what is js ? 
+answer -> js is a objet oriented single threaded sunchronous language that executes code line by line. it is a dynamically typed language  language/ 
+Question2 - Why is JavaScript called a dynamically typed language?
+answer -> js is consider as dynamically typed language because it has only 3 keywords let, var and const and its type are desided when we compile over code. 
+question 3 -> What is the difference between primitive and non-primitive data types?
+answer -> permtive data type are those whose memory store in stack for example int string etc and on the other hand
+non-primitive are those whose datatype are stored in head like object, arr map etc
+
+Question 4 -> What is the difference between null and undefined?
+answer -> firstly null are consider as nothing we have to pass noting value to something we use null and it is also set 
+by developer and on the other and undefined are we thier is address atore for that variable but nothing is present their
+
+Question5 -> what is NAN? 
+answer -> nan i not a number it is a special primitive value allocated in global scope and that represent the invalid, 
+un unrepresentable numerical result and it datatype is number
+
+Question 6 What is the difference between == and ===?
+answer -> when we use == to check anything we use we are only checking the value but when  we are using === we arre checking
+the value but also it datatype
+
+Question 7 What is type coercion?
+answer -> type coercion we are taking to differnt datatype and perform opertaion with them
+
+Question 8 -> What is strict mode?
+answer -> basically js was build in 15 days so their are lot of problems in js so with teh help of strict mode we can solve it. 
+
+

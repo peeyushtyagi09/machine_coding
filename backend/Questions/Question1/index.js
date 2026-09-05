@@ -4,7 +4,7 @@ const { PORT } = require("./example.env")
 
 
 app.use(express.json());
-app.use(helmet());
+// app.use(helmet());
 
 app.get('/', (req, res) => {
     res.send("hello world");
